@@ -3,7 +3,17 @@ import styled from 'styled-components';
 import Card from './Card';
 import Followers from './Followers';
 const User = () => {
-  return <h2>search component</h2>;
+  return <section className='section'>
+    <Wrapper className="section-center">
+      <Card />
+      <Followers />
+    </Wrapper>
+    {/* <div className='user-details'>
+      <h2>User Details</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non neque elit. Sed ut tellus ac felis facilisis rutrum.</p>
+    </div> */}
+    
+  </section>;
 };
 
 const Wrapper = styled.div`
