@@ -30,11 +30,6 @@ const { repos } = React.useContext(GithubContext)
     return {...item, value:item.stars}
   }).slice(0, 5)
 
-
-
-  // stars , forks
-
-
   let { stars, forks } = repos.reduce((total, item) => { 
     const { stargazers_count, name, forks } = item
     
@@ -48,29 +43,6 @@ total.forks[forks] = {label:name, value:forks}
   
 stars = Object.values(stars).slice(-5).reverse()
 forks = Object.values(forks).slice(-5).reverse()
-
-  
-// STEP 2 - Chart Dat
-const chartData = [
-  {
-    label: "Golang",
-    value: "25"
-  },
-  {
-    label: "Solidity",
-    value: "20"
-  },
-  {
-    label: "Javascript",
-    value: "70"
-  },
-  
-];
-
-  
-  // const { } = repos
-
-
 
 
   return <section className='section'>
