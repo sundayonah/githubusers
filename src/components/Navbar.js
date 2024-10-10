@@ -1,26 +1,36 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useAuth0 } from '@auth0/auth0-react';
+import {
+   SignedIn,
+   SignedOut,
+   SignInButton,
+   UserButton,
+   useUser,
+} from '@clerk/clerk-react';
 
 const Navbar = () => {
-   const {
-      isAuthenticated,
-      loginWithRedirect,
-      logout,
-      user,
-      isLoading,
-   } = useAuth0();
+   const { user } = useUser();
 
    return (
       <Wrapper>
-         <button onClick={() => loginWithRedirect()}>Log In</button>
-         <button
-            onClick={() =>
-               logout({ logoutParams: { returnTo: window.location.origin } })
-            }
-         >
-            Log Out
-         </button>
+         {!user && (
+            <div>
+               <span>Welcome Guest</span>
+            </div>
+         )}
+         <SignedOut>
+            <SignInButton>
+               <button className="login-btn">Login</button>
+            </SignInButton>
+         </SignedOut>
+
+         <SignedIn>
+            <span>Welcome,</span>
+            <div>
+               <strong>{user?.fullName || 'User'}</strong>
+            </div>
+            <UserButton />
+         </SignedIn>
       </Wrapper>
    );
 };
@@ -35,16 +45,7 @@ const Wrapper = styled.nav`
    justify-content: center;
    align-items: center;
    gap: 1.5rem;
-   h4 {
-      margin-bottom: 0;
-      font-weight: 400;
-   }
-   img {
-      width: 35px !important;
-      height: 35px;
-      border-radius: 50%;
-      object-fit: cover;
-   }
+
    button {
       background: transparent;
       border: transparent;

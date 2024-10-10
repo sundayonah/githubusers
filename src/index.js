@@ -4,22 +4,24 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { GithubProvider } from './context/context';
-import { Auth0Provider } from '@auth0/auth0-react';
+import { ClerkProvider } from '@clerk/clerk-react';
+
+// import { Auth0Provider } from '@auth0/auth0-react';
+
+const PUBLISHABLE_KEY = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY;
+
+if (!PUBLISHABLE_KEY) {
+   throw new Error('Missing Publishable Key!');
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
    <React.StrictMode>
-      <Auth0Provider
-         domain="dev-0j7lmsze0vocviz7.us.auth0.com"
-         clientId="9DQnVAJmL9fdcd2UzZg4qppw3mEOwNac"
-         authorizationParams={{
-            redirect_uri: window.location.origin,
-         }}
-      >
+      <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
          <GithubProvider>
             <App />
          </GithubProvider>
-      </Auth0Provider>
+      </ClerkProvider>
    </React.StrictMode>
 );
 
