@@ -12,7 +12,6 @@ const Search = () => {
    // get things from global context
    const handleSubmit = (e) => {
       e.preventDefault();
-      console.log(user);
 
       if (user) {
          // more logic coming up soon...
@@ -35,7 +34,8 @@ const Search = () => {
                   <MdSearch size={20} />
                   <input
                      type="text"
-                     value={user}s
+                     value={user}
+                     s
                      onChange={(e) => setUser(e.target.value)}
                      placeholder="Enter github username"
                   />

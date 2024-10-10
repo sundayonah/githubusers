@@ -14,6 +14,13 @@ const Navbar = () => {
    return (
       <Wrapper>
          <button onClick={() => loginWithRedirect()}>Log In</button>
+         <button
+            onClick={() =>
+               logout({ logoutParams: { returnTo: window.location.origin } })
+            }
+         >
+            Log Out
+         </button>
       </Wrapper>
    );
 };

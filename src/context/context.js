@@ -12,7 +12,7 @@ export const GithubProvider = ({ children }) => {
    const [githubUser, setGithubUser] = useState(mockUser);
    const [repos, setRepos] = useState(mockRepos);
    const [followers, setFollowers] = useState(mockFollowers);
-   const [username, setUsername] = useState('reactjs');
+   //    const [username, setUsername] = useState('reactjs');
    // request isLoading
    const [requests, setRequests] = useState(0);
    const [isLoading, setIsLoading] = useState(false);
