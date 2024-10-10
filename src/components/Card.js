@@ -14,10 +14,6 @@ const Card = () => {
       bio,
       location,
       twitter_username,
-      public_repos,
-      followers,
-      following,
-      public_gists,
    } = githubUser;
 
    return (

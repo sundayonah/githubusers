@@ -7,8 +7,6 @@ const Followers = () => {
 
   const { followers } = React.useContext(GithubContext)
   
-  const {avatar_url,html_url, login } = followers
-
 
   return <Wrapper>
     <div className='followers'>
